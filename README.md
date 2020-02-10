@@ -20,8 +20,9 @@ People spend plenty of time to choose a new place to live. They need to check lo
 * [citybike station map](https://member.citibikenyc.com/map/)
 * [google map](https://www.google.com/maps/place/New+York,+NY)
 * [Median Income Across the US (WNYC)](https://project.wnyc.org/median-income-nation/#4/37.65/-85.12)
+* etc...
 
-This project focus on giving proper recommendation to several factors the user selected, so that they can decide where to live easily. 
+This project provide a one-stope searching method to give recommendation to people based on their own preference
 
 
 ## Pipline
@@ -96,11 +97,5 @@ curl "https://download-link-address/" | aws s3 cp - s3://aws-bucket/data-file
 ### Transfer Longitude and latitude to zip code:
 Using <a href="https://uszipcode.readthedocs.io/index.html">uszipcode</a>, install it on pyspark.
 
-### Calculate income level, age level and family percent level:
 
-### Calculate crime rate:
-
-### Calculate population density:
-
-### Calculate real estate sale price per square feet:
 
