@@ -37,10 +37,7 @@ This project focus on giving proper recommendation to several factors the user s
 ### BigQuery --> Google Cloud Storage
 * [Get into your GCS bucket](https://cloud.google.com/storage/?utm_source=google&utm_medium=cpc&utm_campaign=na-US-all-en-dr-bkws-all-all-trial-e-dr-1008076&utm_content=text-ad-none-any-DEV_c-CRE_79747411687-ADGP_Hybrid+%7C+AW+SEM+%7C+BKWS+%7C+US+%7C+en+%7C+EXA+~+Google+Cloud+Storage-KWID_43700007031545851-kwd-11642151515&utm_term=KW_google%20cloud%20storage-ST_google+cloud+storage&gclid=CjwKCAiA98TxBRBtEiwAVRLqu-Q98O-7xe8Fvcte79YELjXsAud44dJ95qgW3-Pgyzuixv4uZde9HhoCLKwQAvD_BwE)
 * [Find dataset on BigQuery](https://console.cloud.google.com/marketplace/browse?filter=solution-type:dataset)
-* Click the dataset you chose, click **View Dataset**
-* Write SQL query, click **RUN**.
-* Click **Save Result**, choose **BigQery table**, save it under a specific database, name the table
-* Find the table through left navigation bar, click **EXPORT**, choose **Export to GCS**, choose your bucket, create a name for the table
+* This is the [following steps](GCS/README.md)
 
 ### Google cloud Storage --> S3 bucket
 [Instruction](http://proanalyst.net/migrate-files-gcs-into-amazon-s3/)
@@ -68,6 +65,8 @@ After configuration, run those command to create a new database:
 * [Hospital Cost](https://console.cloud.google.com/bigquery?project=plucky-sound-238319&folder&organizationId&p=bigquery-public-data&d=medicare&page=dataset)
 * [New York CityBike](https://console.cloud.google.com/bigquery?project=plucky-sound-238319&folder&organizationId&p=bigquery-public-data&d=new_york_citibike&t=citibike_stations&page=table)
 * [New York Subway](https://console.cloud.google.com/bigquery?project=plucky-sound-238319&folder&organizationId&p=bigquery-public-data&d=new_york_subway&t=stations&page=table)
+* [DOB Complaints Received](https://data.cityofnewyork.us/Housing-Development/DOB-Complaints-Received/eabe-havv)
+* [Retail Food Stores](https://data.ny.gov/Economic-Development/Retail-Food-Stores/9a8c-vfzj)
 * Crime and rolling sale dataset attached in folder Spark: **data.csv**
 
 
