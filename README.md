@@ -25,7 +25,7 @@ This project focus on giving proper recommendation to several factors the user s
 
 
 ## Pipline
-
+[image](http://github.com/MengRen2333/living-recommendation/raw/master/images/pipeline.png)
 
 **Figure 1.** Pipeline depicting the flow of data.
 
