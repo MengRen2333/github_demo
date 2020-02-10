@@ -42,9 +42,16 @@ This project focus on giving proper recommendation to several factors the user s
 ### Google cloud Storage --> S3 bucket
 [Instruction](http://proanalyst.net/migrate-files-gcs-into-amazon-s3/)
 
+
+### Webpage --> s3 bucket
+```
+curl "https://download-link-address/" | aws s3 cp - s3://aws-bucket/data-file
+```
+
+
 ### Spark
-[Instruction](https://docs.google.com/document/d/1InLxbu-FH2nyd0NuJ3ewdvAt0Ttk_bNUwlQop38lq0Q/edit)
-After configuration, run those command to create a new database:
+* [Instruction](https://docs.google.com/document/d/1InLxbu-FH2nyd0NuJ3ewdvAt0Ttk_bNUwlQop38lq0Q/edit)
+* After configuration, run those command to create a new database:
 
     sudo -u postgres psql
     CREATE DATABASE mydb;
@@ -55,6 +62,12 @@ After configuration, run those command to create a new database:
 
 ### PostgreSQL
 [Instruction](https://blog.insightdatascience.com/simply-install-postgresql-58c1e4ebf252)
+
+
+### Frount-End
+* [Tableau to html file](https://www.youtube.com/watch?v=wJ2CHIJalNU)
+* This is the [following steps](Frount-End/README.md)
+
 
 
 
