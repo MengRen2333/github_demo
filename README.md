@@ -102,18 +102,19 @@ curl "https://download-link-address/" | aws s3 cp - s3://aws-bucket/data-file
 + All dataset are pre-processed to calculate average value based on zip code
 ```
 
-### Transfer longitude and latitude to zip code:
+### a) Transfer longitude and latitude to zip code:
 Using <a href="https://uszipcode.readthedocs.io/index.html">uszipcode</a>, install it on pyspark.
 
-### a) Calculate crime rate:
+### b) Calculate crime rate:
 
-### b) Calculate population density:
 
-### c) Calculate income level:
+### c) Calculate population density:
 
-### d) Calculate average apartment price per square feet:
+### d) Calculate income level:
 
-### e) Calculate Noise and bad street condition:
+### e) Calculate average apartment price per square feet:
+
+### f) Calculate Noise and bad street condition:
 
 
 
