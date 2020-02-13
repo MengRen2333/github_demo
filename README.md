@@ -3,6 +3,7 @@ Find the best place for you to live!
 
 [Website](http://predictionsanalytics.xyz/)
 
+
 ## Table of Contents
 1. [Motivation](README.md#motivation)
 1. [Pipline](README.md#pipline)
@@ -26,7 +27,7 @@ This project provide a one-stope searching method to give recommendation to peop
 
 
 ## Pipline
-[image](http://github.com/MengRen2333/living-recommendation/raw/master/images/pipeline.png)
+![image](http://github.com/MengRen2333/living-recommendation/raw/master/images/pipeline.png)
 
 **Figure 1.** Pipeline depicting the flow of data.
 
@@ -81,11 +82,13 @@ curl "https://download-link-address/" | aws s3 cp - s3://aws-bucket/data-file
 * [US census data](https://console.cloud.google.com/bigquery?project=plucky-sound-238319&folder&organizationId&p=bigquery-public-data&d=census_bureau_acs&t=zip_codes_2017_5yr&page=table)
 * [US census population](https://console.cloud.google.com/bigquery?project=plucky-sound-238319&folder&organizationId&p=bigquery-public-data&d=census_bureau_usa&t=population_by_zip_2010&page=table)
 * [Hospital Cost](https://console.cloud.google.com/bigquery?project=plucky-sound-238319&folder&organizationId&p=bigquery-public-data&d=medicare&page=dataset)
+* [Hospital Type](https://console.cloud.google.com/bigquery?project=plucky-sound-238319&folder&organizationId&p=bigquery-public-data&d=cms_medicare&page=dataset)
 * [New York CityBike](https://console.cloud.google.com/bigquery?project=plucky-sound-238319&folder&organizationId&p=bigquery-public-data&d=new_york_citibike&t=citibike_stations&page=table)
 * [New York Subway](https://console.cloud.google.com/bigquery?project=plucky-sound-238319&folder&organizationId&p=bigquery-public-data&d=new_york_subway&t=stations&page=table)
 * [DOB Complaints Received](https://data.cityofnewyork.us/Housing-Development/DOB-Complaints-Received/eabe-havv)
 * [Retail Food Stores](https://data.ny.gov/Economic-Development/Retail-Food-Stores/9a8c-vfzj)
 * [Crime and rolling sale dataset](https://drive.google.com/open?id=1N_VBlx5wupROKt040-z0NJFsvYK_cSzv)
+* [Rolling sale and crime dataset]()
 
 
 
@@ -95,6 +98,19 @@ curl "https://download-link-address/" | aws s3 cp - s3://aws-bucket/data-file
 
 ## Methodology
 
-### Transfer Longitude and latitude to zip code:
+## 1. pre-process dataset
+### a) Transfer Longitude and latitude to zip code:
 Using <a href="https://uszipcode.readthedocs.io/index.html">uszipcode</a>, install it on pyspark.
+
+### b) Calculate Crime Rate
+
+### c) Calculate Population Density
+
+### d) Calculate income level
+
+### e) Calculate average apartment price per square feet
+
+
+## 2. Machine Learning
+
 
