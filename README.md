@@ -81,6 +81,7 @@ curl "https://download-link-address/" | aws s3 cp - s3://aws-bucket/data-file
 * [US census data](https://console.cloud.google.com/bigquery?project=plucky-sound-238319&folder&organizationId&p=bigquery-public-data&d=census_bureau_acs&t=zip_codes_2017_5yr&page=table)
 * [US census population](https://console.cloud.google.com/bigquery?project=plucky-sound-238319&folder&organizationId&p=bigquery-public-data&d=census_bureau_usa&t=population_by_zip_2010&page=table)
 * [Hospital Cost](https://console.cloud.google.com/bigquery?project=plucky-sound-238319&folder&organizationId&p=bigquery-public-data&d=medicare&page=dataset)
+* [Hospital type](https://console.cloud.google.com/bigquery?project=plucky-sound-238319&folder&organizationId&p=bigquery-public-data&d=cms_medicare&page=dataset)
 * [New York CityBike](https://console.cloud.google.com/bigquery?project=plucky-sound-238319&folder&organizationId&p=bigquery-public-data&d=new_york_citibike&t=citibike_stations&page=table)
 * [New York Subway](https://console.cloud.google.com/bigquery?project=plucky-sound-238319&folder&organizationId&p=bigquery-public-data&d=new_york_subway&t=stations&page=table)
 * [DOB Complaints Received](https://data.cityofnewyork.us/Housing-Development/DOB-Complaints-Received/eabe-havv)
@@ -90,11 +91,45 @@ curl "https://download-link-address/" | aws s3 cp - s3://aws-bucket/data-file
 
 
 
+
 ## Metrix
 
 
 ## Methodology
 
-### Transfer Longitude and latitude to zip code:
+## 1. Pre-process dataset and calculation
+```diff
++ All dataset are pre-processed to calculate average value based on zip code
+```
+
+### Transfer longitude and latitude to zip code:
 Using <a href="https://uszipcode.readthedocs.io/index.html">uszipcode</a>, install it on pyspark.
+
+### a) Calculate crime rate:
+
+### b) Calculate population density:
+
+### c) Calculate income level:
+
+### d) Calculate average apartment price per square feet:
+
+### e) Calculate Noise and bad street condition:
+
+
+
+
+
+## 2. Machine Learning process
+
+### a) Chosen features:
+
+### b) Improve accuracy:
+
+### c) Make validate result:
+
+
+
+
+
+
 
