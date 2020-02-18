@@ -12,17 +12,15 @@ sc.setLogLevel("ERROR")
 
 
 # table
-path_GDP = 's3a://enjoyablecat/ml/GDP.txt'
+path_GDP = 'ml/GDP.txt'
 GDP = function.load(path_GDP)
 GDP.show()
-path_income = 's3a://enjoyablecat/ml/ny_income_vacanhouse.csv'
+path_income = 'ml/ny_income_vacanhouse.csv'
 income = function.load(path_income)
 income = income.select(col("zip_code").alias("income_zipcode"),'year','median_age','median_income','family_percent', 'vacant_housing_percent', 'percent_income_spent_on_rent')
-path_sale = 's3a://enjoyablecat/ml/prepared.csv'
+path_sale = 'ml/prepared.csv'
 sale = function.load(path_sale)
-# path_complain = 's3a://enjoyablecat/ml'
-# complain = function.load(path_complain)
-path_complain = 's3a://enjoyablecat/ml/Retail_Food_Stores.csv'
+path_complain = 'ml/Retail_Food_Stores.csv'
 complain = function.load(path_complain)
 
 
