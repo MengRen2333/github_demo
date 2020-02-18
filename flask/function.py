@@ -18,10 +18,10 @@ config = ConfigParser()
 config.read(abspath('config.ini'))
 
 # load dataset from s3
-def load(path):
-    config = ConfigParser()
+def load(file_path):
     spark = SparkSession.builder.appName('census').getOrCreate()
-    # path = 's3a://enjoyablecat/processed/citybike_station'
+    bucket = config.get('AWS', 'bucket')
+    path = 's3a://{}/{}'.format(bucket, file_path)
     csv = spark.read.csv(path, header=True)
     return csv
 
