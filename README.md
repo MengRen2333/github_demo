@@ -56,6 +56,7 @@ curl "https://download-link-address/" | aws s3 cp - s3://aws-bucket/data-file
 
 ### Spark
 * [Instruction](https://docs.google.com/document/d/1InLxbu-FH2nyd0NuJ3ewdvAt0Ttk_bNUwlQop38lq0Q/edit)
+* [Standby Instruction](https://github.com/InsightDataScience/pegasus)
 * After configuration, run those command to create a new database:
 ```
     sudo -u postgres psql
@@ -63,6 +64,10 @@ curl "https://download-link-address/" | aws s3 cp - s3://aws-bucket/data-file
     CREATE USER db_select WITH PASSWORD '<setpassword>';
     GRANT ALL PRIVILEGES ON DATABASE mydb TO db_select;
     \connect mydb
+ ```
+ * Run python file by fllowing command:
+ ```
+ spark-submit --master spark://<instance url > :7077 --jars <jar file path> <filename>
  ```
 
 
