@@ -2,7 +2,8 @@
 Find the best place for you to live!
 
 [Website](http://predictionsanalytics.xyz/)
-[Demo](https://docs.google.com/presentation/d/1TCf0l71IQkH3NGzI7GtMEs_NsQbz_f-r8TASIs-8Ul0/edit?usp=sharing)
+
+[Demo](https://docs.google.com/presentation/d/1rJVsnWBVw5YVxCkrvSKoIK1mgGuXMmxFsxjY6NX7psI/edit?usp=sharing)
 
 ## Table of Contents
 1. [Motivation](README.md#motivation)
