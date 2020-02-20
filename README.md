@@ -28,7 +28,7 @@ This project provide a one-stope searching method to give recommendation to peop
 
 
 ## Pipline
-[image](http://github.com/MengRen2333/living-recommendation/raw/master/images/pipeline.png)
+![](./images/pipeline.png)
 
 **Figure 1.** Pipeline depicting the flow of data.
 
