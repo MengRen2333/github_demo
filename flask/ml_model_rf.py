@@ -1,28 +1,45 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*- 
+# ml 
+
+# import my own function and class
 import function
-from pyspark import SparkContext 
+from ml_preprocess_function import ml_preprocess
+
+from pyspark import SparkConf, SparkContext
+from pyspark.sql.functions import col
+from pyspark.sql import functions
+
 from pyspark.sql import SQLContext, Row
-from pyspark.sql.types import *
 import pyspark.sql.functions as f
 from pyspark.ml.feature import StringIndexer, OneHotEncoder, VectorAssembler
 from pyspark.ml.feature import OneHotEncoderEstimator
 # Import all from `sql.types`
 from pyspark.sql.types import *
-
 sc = SparkContext()
 sc.setLogLevel("ERROR")
-sqlContext = SQLContext(sc)
-
-# load data locally
-data_all = sqlContext.read.format('com.databricks.spark.csv').options(header='true', inferschema='true').load('median_replaced_train.csv')
-# choose different features
-# data = data_all.drop('sale_year','median_age','median_income','family_percent','vacant_housing_percent','percent_income_spent_on_rent')
-# data = data_all.drop('sale_year','commercial_units','major_felony','GDP_growth_rate')
-data = data_all.drop('sale_year')
-# data = data_all
-
-data = data.na.drop()
 
 
+# preprocess table for ml
+process = ml_preprocess(sc)
+ml, ml_predict, sale = process.run()
+ml.show()
+ml_predict.show()
+sale.show()
+
+
+
+
+
+
+
+
+
+data = ml
+
+# data = data.na.drop()
+
+print('AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA')
 
 # Write a custom function to convert the data type of DataFrame columns
 
@@ -31,12 +48,12 @@ data = data.na.drop()
 # CONTI_FEATURES  = ['predict_price_square_feet','price_square_feet','building_age','gross_square_feet','misdemeanor', 'non_major_felony', 'major_felony' ,'violation','GDP_growth_rate']
 CONTI_FEATURES  = ['median_age','median_income','family_percent','vacant_housing_percent','percent_income_spent_on_rent', 'predict_price_square_feet','price_square_feet','building_age','gross_square_feet','misdemeanor', 'non_major_felony', 'major_felony' ,'violation','GDP_growth_rate']
 # CONTI_FEATURES  = ['median_age','median_income','family_percent','vacant_housing_percent','percent_income_spent_on_rent', 'predict_price_square_feet','price_square_feet','building_age','gross_square_feet','misdemeanor', 'non_major_felony', 'violation']
-
+cat_features = ['sale_year','zip_code','food_store_num','sub_station_num']
 # Convert the type
 data = function.convertColumn(data, CONTI_FEATURES, FloatType())
+data = function.convertColumn(data, cat_features, IntegerType())
 # Check the dataset
 data.printSchema()
-
 
 
 data = data.withColumnRenamed('predict_price_square_feet', 'label')
@@ -44,7 +61,7 @@ data.show()
 
 feature_list = []
 for col in data.columns:
-    if col == 'label':
+    if col == 'label' or col == 'sale_year':
         continue
     else: 
         feature_list.append(col)
@@ -54,7 +71,11 @@ assembler = VectorAssembler(inputCols=feature_list, outputCol="features")
 
 
 # Split the data into train and test sets
-train_data, test_data = data.randomSplit([.8,.2],seed=1234)
+# data = data.drop('sale_year')
+# train_data, test_data = data.randomSplit([.8,.2],seed=1234)
+train_data = data.where('sale_year = 2018').drop('sale_year')
+test_data = data.where('sale_year < 2018').drop('sale_year')
+
 
 
 from pyspark.ml import Pipeline
@@ -111,13 +132,17 @@ print('maxDepth - ', bestModel.getOrDefault('maxDepth'))
 
 
 # pre process the test dataset
-test = sqlContext.read.format('com.databricks.spark.csv').options(header='true', inferschema='true').load('median_replaced_test.csv')
+# test = sqlContext.read.format('com.databricks.spark.csv').options(header='true', inferschema='true').load('median_replaced_test.csv')
+test = ml_predict
 # try different features
 # data = data_all.drop('sale_year','median_age','median_income','family_percent','vacant_housing_percent','percent_income_spent_on_rent')
 # data = data_all.drop('sale_year','commercial_units','major_felony','GDP_growth_rate')
-test = test.drop('sale_year')
+# test = test.drop('sale_year')
 CONTI_FEATURES  = ['median_age','median_income','family_percent','vacant_housing_percent','percent_income_spent_on_rent','price_square_feet','building_age','gross_square_feet','misdemeanor', 'non_major_felony', 'major_felony' ,'violation','GDP_growth_rate']
-test = function.convertColumn(test, CONTI_FEATURES, FloatType())
+test = function.convertColumn(test, CONTI_FEATURES, FloatType())# Convert the type
+test = function.convertColumn(test, cat_features, IntegerType())
+test = test.drop('sale_year')
+
 print('test')
 test.show()
 prediction_final = cvModel.transform(test)
@@ -136,37 +161,31 @@ print('prediction_final')
 # calculate price growth rate based on prediction price
 prediction_f2 = prediction_f2.withColumn("price_growth_rate", ((f.col('prediction')-f.col('pre_price_square_feet'))*100/f.col('pre_price_square_feet')))
 prediction_f2.printSchema()
-prediction_f2.show()
+# prediction_f2.show()
 
 
 # join prediction with previous data 
-path_sale = 's3a://enjoyablecat/ml/prepared.csv'
-sale = function.load(path_sale)
 
-sale = sale\
-    .where("sale_price > 1000")
-sale = sale\
-    .withColumn("price_square_feet", (f.col("sale_price") / f.col("land_square_feet")))\
-    .drop('sale_price', 'land_square_feet')
-# sale = sale.select(sale.zip_code, sale.building_age, sale.price_square_feet.cast(IntegerType()))
-sale=sale\
-    .groupBy('zip_code','sale_year')\
-    .agg(f.avg('price_square_feet'))
-sale = sale\
-    .select('zip_code','sale_year', f.col("avg(price_square_feet)").alias("price_square_feet").cast(IntegerType())).withColumn('price_growth_rate', f.lit(null).cast(StringType))
-# sale = function.avg_price_per_square_feet(sale)
-sale.show()
+# path_sale = 'ml/prepared.csv'
+# sale = function.load(path_sale)
+
+
+# sale = function.sale_preprocess(sale)
+sale = sale.withColumn('price_growth_rate',f.lit(0))
+
+
 
 # set prediction as year 2020 price square feet
 prediction_f = prediction_f2.withColumn('Country',f.lit(2020)).select('pre_zip_code', 'prediction','Country','price_growth_rate')
 prediction_f = prediction_f.withColumnRenamed('Country', 'sale_year').withColumnRenamed('prediction', 'price_square_feet').withColumnRenamed('pre_zip_code', 'zip_code')
 sale2 = sale.select('zip_code','sale_year','price_square_feet','price_growth_rate')
 prediction_f = prediction_f.unionAll(sale2)
-prediction_f.show()
+# prediction_f.show()
 
 # store the table
-table = 'price_all_predict'
+table = 'price_all_predict2'
 function.save(prediction_f, table)
+
 
 
 

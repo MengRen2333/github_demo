@@ -3,6 +3,8 @@ Find the best place for you to live!
 
 [Website](http://predictionsanalytics.xyz/)
 
+[Demo](https://docs.google.com/presentation/d/1rJVsnWBVw5YVxCkrvSKoIK1mgGuXMmxFsxjY6NX7psI/edit?usp=sharing)
+
 ## Table of Contents
 1. [Motivation](README.md#motivation)
 1. [Pipline](README.md#pipline)
@@ -55,6 +57,7 @@ curl "https://download-link-address/" | aws s3 cp - s3://aws-bucket/data-file
 
 ### Spark
 * [Instruction](https://docs.google.com/document/d/1InLxbu-FH2nyd0NuJ3ewdvAt0Ttk_bNUwlQop38lq0Q/edit)
+* [Standby Instruction](https://github.com/InsightDataScience/pegasus)
 * After configuration, run those command to create a new database:
 ```
     sudo -u postgres psql
@@ -62,6 +65,10 @@ curl "https://download-link-address/" | aws s3 cp - s3://aws-bucket/data-file
     CREATE USER db_select WITH PASSWORD '<setpassword>';
     GRANT ALL PRIVILEGES ON DATABASE mydb TO db_select;
     \connect mydb
+ ```
+ * Run python file by fllowing command:
+ ```
+ spark-submit --master spark://<instance url > :7077 --jars <jar file path> <filename>
  ```
 
 
@@ -81,6 +88,7 @@ curl "https://download-link-address/" | aws s3 cp - s3://aws-bucket/data-file
 * [US census data](https://console.cloud.google.com/bigquery?project=plucky-sound-238319&folder&organizationId&p=bigquery-public-data&d=census_bureau_acs&t=zip_codes_2017_5yr&page=table)
 * [US census population](https://console.cloud.google.com/bigquery?project=plucky-sound-238319&folder&organizationId&p=bigquery-public-data&d=census_bureau_usa&t=population_by_zip_2010&page=table)
 * [Hospital Cost](https://console.cloud.google.com/bigquery?project=plucky-sound-238319&folder&organizationId&p=bigquery-public-data&d=medicare&page=dataset)
+* [Hospital type](https://console.cloud.google.com/bigquery?project=plucky-sound-238319&folder&organizationId&p=bigquery-public-data&d=cms_medicare&page=dataset)
 * [New York CityBike](https://console.cloud.google.com/bigquery?project=plucky-sound-238319&folder&organizationId&p=bigquery-public-data&d=new_york_citibike&t=citibike_stations&page=table)
 * [New York Subway](https://console.cloud.google.com/bigquery?project=plucky-sound-238319&folder&organizationId&p=bigquery-public-data&d=new_york_subway&t=stations&page=table)
 * [DOB Complaints Received](https://data.cityofnewyork.us/Housing-Development/DOB-Complaints-Received/eabe-havv)
@@ -90,11 +98,50 @@ curl "https://download-link-address/" | aws s3 cp - s3://aws-bucket/data-file
 
 
 
+
 ## Metrix
 
 
 ## Methodology
 
-### Transfer Longitude and latitude to zip code:
+## 1. Pre-process dataset and calculation
+```diff
++ All dataset are pre-processed to calculate average value based on zip code
+```
+
+### a) Transfer longitude and latitude to zip code:
 Using <a href="https://uszipcode.readthedocs.io/index.html">uszipcode</a>, install it on pyspark.
+* Download `.whl` file
+* Store it under one of your own folder
+* Terminal access into this folder
+* `pip3 install <whl file>`
+
+### b) Calculate crime rate:
+
+
+### c) Calculate population density:
+
+### d) Calculate income level:
+
+### e) Calculate average apartment price per square feet:
+
+### f) Calculate Noise and bad street condition:
+
+
+
+
+
+## 2. Machine Learning process
+
+### a) Chosen features:
+
+### b) Improve accuracy:
+
+### c) Make validate result:
+
+
+
+
+
+
 
