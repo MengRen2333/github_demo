@@ -39,8 +39,6 @@ data = ml
 
 # data = data.na.drop()
 
-print('AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA')
-
 # Write a custom function to convert the data type of DataFrame columns
 
 # List of continuous features
@@ -132,7 +130,6 @@ print('maxDepth - ', bestModel.getOrDefault('maxDepth'))
 
 
 # pre process the test dataset
-# test = sqlContext.read.format('com.databricks.spark.csv').options(header='true', inferschema='true').load('median_replaced_test.csv')
 test = ml_predict
 # try different features
 # data = data_all.drop('sale_year','median_age','median_income','family_percent','vacant_housing_percent','percent_income_spent_on_rent')
@@ -165,12 +162,6 @@ prediction_f2.printSchema()
 
 
 # join prediction with previous data 
-
-# path_sale = 'ml/prepared.csv'
-# sale = function.load(path_sale)
-
-
-# sale = function.sale_preprocess(sale)
 sale = sale.withColumn('price_growth_rate',f.lit(0))
 
 
@@ -182,7 +173,7 @@ sale2 = sale.select('zip_code','sale_year','price_square_feet','price_growth_rat
 prediction_f = prediction_f.unionAll(sale2)
 # prediction_f.show()
 
-# store the table
+# store the table to postgresql
 table = 'price_all_predict2'
 function.save(prediction_f, table)
 
