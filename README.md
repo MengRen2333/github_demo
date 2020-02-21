@@ -28,7 +28,7 @@ This project provide a one-stope searching method to give recommendation to peop
 
 
 ## Pipline
-![](./images/pipeline.png)
+![](./pipeline.png)
 
 **Figure 1.** Pipeline depicting the flow of data.
 
@@ -105,6 +105,8 @@ curl "https://download-link-address/" | aws s3 cp - s3://aws-bucket/data-file
 ├── README.md
 ├── Frount-End
 │   ├── README.md
+│   ├── namecheap.png
+│   ├── security.png
 │   ├── main.py
 |   └── templates
 |       └── index.html
