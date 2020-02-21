@@ -100,7 +100,7 @@ curl "https://download-link-address/" | aws s3 cp - s3://aws-bucket/data-file
 
 
 ## File Structure
-
+```
 .
 ├── README.md
 ├── Frount-End
@@ -119,7 +119,7 @@ curl "https://download-link-address/" | aws s3 cp - s3://aws-bucket/data-file
 │   ├── run.py
 │   └── config.ini
 └── pipeline.png
-
+```
 
 ## Methodology
 
