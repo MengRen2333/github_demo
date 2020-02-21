@@ -11,7 +11,7 @@ Find the best place for you to live!
 1. [Requirements](README.md#requirements)
 1. [Architechture](README.md#architechture)
 1. [DataSet](README.md#dataset)
-1. [Metrics](README.md#metrics)
+1. [File Structure](README.md#File-Structure)
 1. [Methodology](README.methodology)
 
 
@@ -28,7 +28,7 @@ This project provide a one-stope searching method to give recommendation to peop
 
 
 ## Pipline
-![](./images/pipeline.png)
+![](./pipeline.png)
 
 **Figure 1.** Pipeline depicting the flow of data.
 
@@ -99,8 +99,29 @@ curl "https://download-link-address/" | aws s3 cp - s3://aws-bucket/data-file
 
 
 
-## Metrix
-
+## File Structure
+```
+.
+├── README.md
+├── Frount-End
+│   ├── README.md
+│   ├── namecheap.png
+│   ├── security.png
+│   ├── main.py
+|   └── templates
+|       └── index.html
+├── GCS
+│   └── README.md
+|
+├── spark
+│   ├── README.md
+│   ├── function.py
+│   ├── ml_model_rf.py
+│   ├── ml_preprocess_function.py
+│   ├── run.py
+│   └── config.ini
+└── pipeline.png
+```
 
 ## Methodology
 
@@ -116,28 +137,12 @@ Using <a href="https://uszipcode.readthedocs.io/index.html">uszipcode</a>, insta
 * Terminal access into this folder
 * `pip3 install <whl file>`
 
-### b) Calculate crime rate:
-
-
-### c) Calculate population density:
-
-### d) Calculate income level:
-
-### e) Calculate average apartment price per square feet:
-
-### f) Calculate Noise and bad street condition:
-
-
 
 
 
 ## 2. Machine Learning process
 
-### a) Chosen features:
-
-### b) Improve accuracy:
-
-### c) Make validate result:
+Build an random forest regression model to predict housing price for 2020 based on zipcode. 
 
 
 
