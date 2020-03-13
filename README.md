@@ -148,27 +148,18 @@ Build an random forest regression model to predict housing price for 2020 based 
 
 ### a) Input features:
 | zip_code      | 
+| ---------- |
 | price_square_feet| 
-| total_units|
-| ---------- | 
+| total_units| 
 | building_age |
-| ---------- | 
 | gross_square_feet|
-| ---------- | 
 | Crime_index|
-| ---------- | 
 | GDP_growth_rate|
-| ---------- | 
 | median_income|
-| ---------- | 
 | vacant_housing_percent|
-| ---------- | 
 | percent_income_spent_on_rent|
-| ---------- | 
 | median_age|
-| ---------- | 
 | sub_station_num|
-| ---------- | 
 | food_store_num|
 
 ### b) Lable:
@@ -178,10 +169,8 @@ Build an random forest regression model to predict housing price for 2020 based 
 ### c) Output table:
 | zip_code|
 | ---------- | 
-| Sale_year |
-| ---------- | 
+| Sale_year | 
 | price_square_feet|
-| ---------- | 
 | price_growth_rate|
 
 
