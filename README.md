@@ -2,6 +2,8 @@
 Find the best place for you to live!
 
 [Website](http://predictionsanalytics.xyz/)
+![](./images/web.png)
+*Due to the AWS credit limitation, this webpage cannot be display all the time. If you are interested, please contact me to start it.*
 
 [Demo](https://docs.google.com/presentation/d/1rJVsnWBVw5YVxCkrvSKoIK1mgGuXMmxFsxjY6NX7psI/edit?usp=sharing)
 
@@ -28,7 +30,7 @@ This project provide a one-stope searching method to give recommendation to peop
 
 
 ## Pipline
-![](./pipeline.png)
+![](./images/pipeline.png)
 
 **Figure 1.** Pipeline depicting the flow of data.
 
@@ -143,6 +145,46 @@ Using <a href="https://uszipcode.readthedocs.io/index.html">uszipcode</a>, insta
 ## 2. Machine Learning process
 
 Build an random forest regression model to predict housing price for 2020 based on zipcode. 
+
+### a) Input features:
+| zip_code      | 
+| ---------- | 
+| price_square_feet| 
+| ---------- | 
+| total_units|
+| ---------- | 
+| building_age |
+| ---------- | 
+| gross_square_feet|
+| ---------- | 
+| Crime_index|
+| ---------- | 
+| GDP_growth_rate|
+| ---------- | 
+| median_income|
+| ---------- | 
+| vacant_housing_percent|
+| ---------- | 
+| percent_income_spent_on_rent|
+| ---------- | 
+| median_age|
+| ---------- | 
+| sub_station_num|
+| ---------- | 
+| food_store_num|
+
+### b) Lable:
+| price_square_feet (next year)|
+
+
+### c) Output table:
+| zip_code|
+| ---------- | 
+| Sale_year |
+| ---------- | 
+| price_square_feet|
+| ---------- | 
+| price_growth_rate|
 
 
 
