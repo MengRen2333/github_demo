@@ -1,11 +1,12 @@
 # ComfortLive
 Find the best place for you to live!
 
+[Demo presentation slides](https://docs.google.com/presentation/d/1rJVsnWBVw5YVxCkrvSKoIK1mgGuXMmxFsxjY6NX7psI/edit?usp=sharing)
 [Website](http://predictionsanalytics.xyz/)
 ![](./images/web.png)
 *Due to the AWS credit limitation, this webpage cannot be display all the time. If you are interested, please contact me to start it.*
 
-[Demo](https://docs.google.com/presentation/d/1rJVsnWBVw5YVxCkrvSKoIK1mgGuXMmxFsxjY6NX7psI/edit?usp=sharing)
+
 
 ## Table of Contents
 1. [Motivation](README.md#motivation)
@@ -164,6 +165,7 @@ Build an random forest regression model to predict housing price for 2020 based 
 
 ### b) Lable:
 | price_square_feet (next year)|
+| ---------- | 
 
 
 ### c) Output table:
