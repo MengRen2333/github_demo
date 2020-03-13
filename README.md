@@ -2,6 +2,8 @@
 Find the best place for you to live!
 
 [Demo presentation slides](https://docs.google.com/presentation/d/1rJVsnWBVw5YVxCkrvSKoIK1mgGuXMmxFsxjY6NX7psI/edit?usp=sharing)
+
+
 [Website](http://predictionsanalytics.xyz/)
 ![](./images/web.png)
 *Due to the AWS credit limitation, this webpage cannot be display all the time. If you are interested, please contact me to start it.*
@@ -123,7 +125,10 @@ curl "https://download-link-address/" | aws s3 cp - s3://aws-bucket/data-file
 │   ├── ml_preprocess_function.py
 │   ├── run.py
 │   └── config.ini
-└── pipeline.png
+├── image
+    ├── pipeline.png
+    └── web.png
+
 ```
 
 ## Methodology
