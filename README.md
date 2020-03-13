@@ -125,7 +125,7 @@ curl "https://download-link-address/" | aws s3 cp - s3://aws-bucket/data-file
 │   ├── ml_preprocess_function.py
 │   ├── run.py
 │   └── config.ini
-├── image
+└── image
     ├── pipeline.png
     └── web.png
 
@@ -133,26 +133,27 @@ curl "https://download-link-address/" | aws s3 cp - s3://aws-bucket/data-file
 
 ## Methodology
 
-## 1. Pre-process dataset and calculation
+### 1. Pre-process dataset and calculation
 ```diff
 + All dataset are pre-processed to calculate average value based on zip code
 ```
 
-### a) Transfer longitude and latitude to zip code:
+#### a) Transfer longitude and latitude to zip code:
 Using <a href="https://uszipcode.readthedocs.io/index.html">uszipcode</a>, install it on pyspark.
 * Download `.whl` file
 * Store it under one of your own folder
 * Terminal access into this folder
 * `pip3 install <whl file>`
 
+### 2. Output table:
 
 
 
-## 2. Machine Learning process
+### 3. Machine Learning process
 
 Build an random forest regression model to predict housing price for 2020 based on zipcode. 
 
-### a) Input features:
+#### a) Input features:
 | zip_code      | 
 | ---------- |
 | price_square_feet| 
@@ -168,12 +169,12 @@ Build an random forest regression model to predict housing price for 2020 based 
 | sub_station_num|
 | food_store_num|
 
-### b) Lable:
+#### b) Lable:
 | price_square_feet (next year)|
 | ---------- | 
 
 
-### c) Output table:
+#### c) Output table:
 | zip_code|
 | ---------- | 
 | Sale_year | 
