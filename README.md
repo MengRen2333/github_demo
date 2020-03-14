@@ -146,6 +146,38 @@ Using <a href="https://uszipcode.readthedocs.io/index.html">uszipcode</a>, insta
 * `pip3 install <whl file>`
 
 ### 2. Output table:
+|zip_code| 
+| ---------- |
+|Income_level|
+|Age_level|
+|Family_percent_level|
+|Population_density|
+|Citybike_station_num|
+|Price_square_feet|
+|Food_store_num|
+|Crime_index|
+|Quite_community|
+|Better_street_condition|
+|Internal_point_lat|
+|Internal_point_lon|
+
+|zip_code| 
+| ---------- |
+|Subway_routes|
+|Subway_num|
+
+|zip_code| 
+| ---------- |
+|Hospital_type|
+|Hospital_count|
+|Patient_type|
+|Average_payment|
+
+|zip_code| 
+| ---------- |
+|Noise| 
+|bad_street_condition|
+
 
 
 
