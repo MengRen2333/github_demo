@@ -1,9 +1,13 @@
 # ComfortLive
-Find the best place for you to live!
+This project build a pipline to process 9 dataset, provide a recommendation system that can help people find the best place to live in New York!
+
+[Demo presentation slides](https://docs.google.com/presentation/d/1rJVsnWBVw5YVxCkrvSKoIK1mgGuXMmxFsxjY6NX7psI/edit?usp=sharing)
 
 [Website](http://predictionsanalytics.xyz/)
+![](./images/web.png)
+*Due to the AWS credit limitation, this webpage cannot be display all the time. If you are interested, please contact me to start it.*
 
-[Demo](https://docs.google.com/presentation/d/1rJVsnWBVw5YVxCkrvSKoIK1mgGuXMmxFsxjY6NX7psI/edit?usp=sharing)
+
 
 ## Table of Contents
 1. [Motivation](README.md#motivation)
@@ -24,11 +28,11 @@ People spend plenty of time to choose a new place to live. They need to check lo
 * [Median Income Across the US (WNYC)](https://project.wnyc.org/median-income-nation/#4/37.65/-85.12)
 * etc...
 
-This project provide a one-stope searching method to give recommendation to people based on their own preference
+This project provide a one-stope searching method to give recommendation to people based on their own preference.
 
 
 ## Pipline
-![](./pipeline.png)
+![](./images/pipeline.png)
 
 **Figure 1.** Pipeline depicting the flow of data.
 
@@ -120,29 +124,96 @@ curl "https://download-link-address/" | aws s3 cp - s3://aws-bucket/data-file
 │   ├── ml_preprocess_function.py
 │   ├── run.py
 │   └── config.ini
-└── pipeline.png
+└── image
+    ├── pipeline.png
+    └── web.png
+
 ```
 
 ## Methodology
 
-## 1. Pre-process dataset and calculation
+### 1. Pre-process dataset and calculation
 ```diff
 + All dataset are pre-processed to calculate average value based on zip code
 ```
+Some details about data schema desighd for each dataset can be found on code and demo presentation slides
 
-### a) Transfer longitude and latitude to zip code:
+#### a) Transfer longitude and latitude to zip code:
 Using <a href="https://uszipcode.readthedocs.io/index.html">uszipcode</a>, install it on pyspark.
 * Download `.whl` file
 * Store it under one of your own folder
 * Terminal access into this folder
 * `pip3 install <whl file>`
 
+### 2. Output table:
+Those well-processed tables stored in PostgreSQL, then visualized by Tableau. 
+
+|zip_code| 
+| ---------- |
+|Income_level|
+|Age_level|
+|Family_percent_level|
+|Population_density|
+|Citybike_station_num|
+|Price_square_feet|
+|Food_store_num|
+|Crime_index|
+|Quite_community|
+|Better_street_condition|
+|Internal_point_lat|
+|Internal_point_lon|
+
+|zip_code| 
+| ---------- |
+|Subway_routes|
+|Subway_num|
+
+|zip_code| 
+| ---------- |
+|Hospital_type|
+|Hospital_count|
+|Patient_type|
+|Average_payment|
+
+|zip_code| 
+| ---------- |
+|Noise| 
+|bad_street_condition|
 
 
 
-## 2. Machine Learning process
+
+### 3. Machine Learning process
 
 Build an random forest regression model to predict housing price for 2020 based on zipcode. 
+
+#### a) Input features:
+| zip_code      | 
+| ---------- |
+| price_square_feet| 
+| total_units| 
+| building_age |
+| gross_square_feet|
+| Crime_index|
+| GDP_growth_rate|
+| median_income|
+| vacant_housing_percent|
+| percent_income_spent_on_rent|
+| median_age|
+| sub_station_num|
+| food_store_num|
+
+#### b) Lable:
+| price_square_feet (next year)|
+| ---------- | 
+
+
+#### c) Output table:
+| zip_code|
+| ---------- | 
+| Sale_year | 
+| price_square_feet|
+| price_growth_rate|
 
 
 
