@@ -1,8 +1,7 @@
 # ComfortLive
-Find the best place for you to live!
+This project build a pipline to process 9 dataset, provide a recommendation system that can help people find the best place to live in New York!
 
 [Demo presentation slides](https://docs.google.com/presentation/d/1rJVsnWBVw5YVxCkrvSKoIK1mgGuXMmxFsxjY6NX7psI/edit?usp=sharing)
-
 
 [Website](http://predictionsanalytics.xyz/)
 ![](./images/web.png)
@@ -29,7 +28,7 @@ People spend plenty of time to choose a new place to live. They need to check lo
 * [Median Income Across the US (WNYC)](https://project.wnyc.org/median-income-nation/#4/37.65/-85.12)
 * etc...
 
-This project provide a one-stope searching method to give recommendation to people based on their own preference
+This project provide a one-stope searching method to give recommendation to people based on their own preference.
 
 
 ## Pipline
@@ -137,6 +136,7 @@ curl "https://download-link-address/" | aws s3 cp - s3://aws-bucket/data-file
 ```diff
 + All dataset are pre-processed to calculate average value based on zip code
 ```
+Some details about data schema desighd for each dataset can be found on code and demo presentation slides
 
 #### a) Transfer longitude and latitude to zip code:
 Using <a href="https://uszipcode.readthedocs.io/index.html">uszipcode</a>, install it on pyspark.
@@ -146,6 +146,8 @@ Using <a href="https://uszipcode.readthedocs.io/index.html">uszipcode</a>, insta
 * `pip3 install <whl file>`
 
 ### 2. Output table:
+Those well-processed tables stored in PostgreSQL, then visualized by Tableau. 
+
 |zip_code| 
 | ---------- |
 |Income_level|
